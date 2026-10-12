@@ -1,0 +1,297 @@
+
+<!--THIS IS A MEDIA QUERY EXAMPLE. WITH THIS METHOD, FIRST USE WIDTH:100% ON THE CONTAINER TO MAKE IT FLUID ON SMALL SCREENS, AND THEN DEAL WITH THE <td> ELEMENTS TO MAKE THEM SHRINK AS NEEDED -->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rove &amp; Co.</title>
+  <style type="text/css">
+  @media only screen and (max-width:600px) {
+    .wrapper {
+      width:100% !important;
+    }
+
+    .pad {
+      padding:24px !important;
+    }
+
+  }
+
+
+  </style>
+</head>
+<body style="margin:0; padding:0; background-color:#f2f4f6;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td align="center" style="padding:24px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; margin:0 auto; background-color:#ffffff;" class="wrapper">
+          <tr>
+            <td style="padding:40px; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; color:#1b1f24;" class="pad">
+              <h1 style="margin:0 0 12px; font-size:24px; line-height:1.3;">Packed for the weekend</h1>
+              <p style="margin:0; font-size:15px; line-height:1.6; color:#6b7280;">Roomy padding looks generous on a laptop and cramped on a phone. That is what the media query is about to fix.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+
+<!--THE STACKS TWO COLUMN LAYOUTS ON MOBILE
+This will consist of:
+1. a shared class on both columns.
+2. a media query that turns each cell into a block at full width. 
+3. box-sizing so the existing padding does not overflow the screen. 
+4. a small fix for the doubled gap that appears once they stack. 
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rove &amp; Co.</title>
+  <style type="text/css">
+  @media only screen and (max-width:600px) {
+    .col {
+      display:block !important;
+      width:100% !important;
+      box-sizing:border-box !important;
+    }
+
+    .col-last {
+      padding-top:0 !important;
+    }
+  }
+    
+  </style>
+</head>
+<body style="margin:0; padding:0; background-color:#f2f4f6;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td align="center" style="padding:24px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; margin:0 auto; background-color:#ffffff;">
+          <tr>
+            <td style="padding:32px 24px 8px; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:20px; font-weight:bold; color:#1b1f24;">Two ways to pack</td>
+          </tr>
+          <tr>
+            <td width="300" valign="top" style="padding:24px; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;" class="col">
+              <h3 style="margin:0 0 8px; font-size:16px; color:#1b1f24;">The weekender</h3>
+              <p style="margin:0; font-size:14px; line-height:1.6; color:#6b7280;">One bag, two days.</p>
+            </td>
+            <td width="300" valign="top" style="padding:24px; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;" class="col col-last">
+              <h3 style="margin:0 0 8px; font-size:16px; color:#1b1f24;">The long haul</h3>
+              <p style="margin:0; font-size:14px; line-height:1.6; color:#6b7280;">Built for three weeks of travel, with a separate boot compartment.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+
+<!--THIS ONE CONTAINS MOBILE ONLY AND DESKTOP ONLY LAYOUTS
+Sometimes you need to build somthing a little different on mobile than on desktop.
+
+This consist of:
+1. a desktop headline that hides below the breakpoint.
+2. a shorter mobile headline, hidden inline by default.
+3. media-query rules that swap them, undoing every inline properety. 
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rove &amp; Co.</title>
+  <style type="text/css">
+  @media only screen and (max-width:600px) {
+    .desktop-only {
+      display:none !important;
+      max-height:0 !important;
+      overflow:hidden !important;
+    }
+
+    .mobile-only {
+      display:block !important; 
+      max-height:none !important;
+      overflow:visible !important;
+    }
+  }
+  </style>
+</head>
+<body style="margin:0; padding:0; background-color:#f2f4f6;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td align="center" style="padding:24px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; margin:0 auto; background-color:#ffffff;">
+          <tr>
+            <td style="padding:32px 24px 8px; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:20px; font-weight:bold; color:#1b1f24;" class="desktop-only">Everything you need for three weeks, in one bag</td>
+          </tr>
+          <!-- START OF MOBILE ONLY CONTENT-->
+          <tr class="mobile-only" style="display:none; max-height:0; overflow:hidden; mso-hide:all;">
+            <!--Should always make hidden the default state in case the media query is ignored-->
+            <td style="padding:32px 24px 8px; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:20px; font-weight:bold; color: #1b1f24;">
+              Pack lighter
+            </td>
+          </tr>
+            <!-- END OF MOBILE ONLY CONTENT-->
+          <tr>
+            <td style="padding:0 24px 32px; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:15px; line-height:1.6; color:#6b7280;">The new weekender ships on Thursday.</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+
+<!--THIS IS THE FLUID PLUS MAX-WIDTH PATTERN-->
+
+<!-- 
+Percentage widths with a max-width cap give you most of the mobile benefit with none of the support problems. No @media, no classes, no !important, and it works in Outlook and in the Gmail app where media queries are unreliable.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rove &amp; Co.</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f2f4f6;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td align="center" style="padding:24px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; max-width:600px; margin:0 auto; background-color:#ffffff;">
+          <tr>
+            <td align="center" style="padding:20px; font-size:0; line-height:0;">
+              <img src="https://picsum.photos/seed/rove-fluid-hero/560/280" width="560" alt="A weekender bag on a station platform" style="display:block; border:0;width:100%; max-width:560px; height:auto; display:block; border:0;">
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:0 24px 32px; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:15px; line-height:1.6; color:#6b7280;">Fixed widths look fine here and overflow on a phone. Time to fix that without a single media query.</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+
+<!--THESE ARE GHOST TABLES WITH CONDITIONAL COMMENTS-->
+
+<!--This contains:
+A ghost table opened before your container and closed after it
+Proof that it stays out of the DOM everywhere else
+A container converted from fixed to fluid, now that Outlook has its own frame
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rove &amp; Co.</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f2f4f6;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td  style="padding:24px;">
+        <!--THIS OPENS THE GHOST TABLE-->
+
+        <!--This is a conditional comment for outlook. Outlook reads what is inside as real markup. Every other client reads it as ordinary HTML comment and ignores it-->
+
+
+      <!--[if mso]><table role="presentation" align="center" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; max-width:600px; margin:0 auto; background-color:#ffffff;">
+      <!--Setting width to 100% instead of width:600 makes it fluid. The max-width:600px still caps it on desktop.-->
+          <tr>
+            <td style="padding:32px; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; color:#1b1f24;">
+                <!--The ghost table replaces align="center" so it is deleted here-->
+              <h1 style="margin:0 0 12px; font-size:24px; line-height:1.3;">Fixed for Outlook, fluid for everyone else</h1>
+              <p style="margin:0; font-size:15px; line-height:1.6; color:#6b7280;">The ghost table gives Outlook the rigid frame it needs while the real container flexes.</p>
+            </td>
+          </tr>
+        </table>
+        <!--[if mso]></td></tr></table><![endif]-->
+
+        <!--THIS CLOSES THE GHOST TABLE-->
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+
+<!--THE HYBRID (SPONGY) LAYOUT-->
+
+<!--
+The hybrid layout, often called spongy, is how you get columns that reflow on a phone without a single media query. 
+
+The idea: build columns from inline-block boxes with a max-width. When there is room they sit side by side, and when there is not they wrap onto separate lines by themselves, exactly like words in a paragraph. Outlook cannot do that, so it gets a ghost table with fixed cells instead.
+-->
+
+<!--
+This consists of:
+A ghost table giving Outlook two rigid 270px cells
+Two inline-block columns that reflow on their own for everyone else
+The font-size:0 fix for the whitespace gap that breaks inline-block layouts
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rove &amp; Co.</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f2f4f6;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td style="padding:24px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; max-width:600px; margin:0 auto; background-color:#ffffff;">
+          <tr>
+            <td style="padding:16px; text-align:center; font-size: 0;">
+              <!--font-size:0 removes the gap between columns that may occur because of display: inline-block -->
+
+              <!--[if mso]><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td width="270" valign="top"><![endif]-->
+
+              <div style="display:inline-block; width:100%; max-width:270px; vertical-align:top;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding:16px;  font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;">
+                  <h3 style="margin:0 0 8px; font-size:16px; color:#1b1f24;">The weekender</h3>
+                  <p style="margin:0; font-size:14px; line-height:1.6; padding:16px; color:#6b7280;">
+                    One bag, two days.
+                  </p>
+                  </td>
+                  </tr>
+                  </table>
+              </div>
+              <!--[if mso]></td><td width="270" valign="top"><![endif]-->
+
+              <div style="display:inline-block; width:100%; max-width:270px; vertical-align:top;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding:16px; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;">
+                  <h3 style="margin:0 0 8px; font-size:16px; color:#1b1f24;">The long haul</h3>
+                  <p style="margin:0; font-size:14px; line-height:1.6; padding:16px; color:#6b7280;">
+                    Built for three weeks, with a rain cover that clips.
+                  </p>
+                  </td>
+                  </tr>
+                  </table>
+              </div>
+              <!--[if mso]></td></tr></table><![endif]-->
+                  
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+
+
